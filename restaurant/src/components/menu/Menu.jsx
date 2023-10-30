@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './menu.css'
+
 
 const mealItems = [
     {
@@ -29,7 +30,35 @@ const mealItems = [
   ];
 
 const Menu = () => {
+  const [cart, setCart] = useState({})
+
+  const addToCart = (mealId) => {
+    setCart((prevCart) => {
+      const updatedCart = {...prevCart}
+      if(updatedCart[mealId]) {
+        updatedCart[mealId] += 1
+      } else {
+        updatedCart[mealId] = 1
+      }
+      return updatedCart
+    })
+  }
+
+  const removeFromCart = (mealId) => {
+    setCart((prevCart) => {
+      const updatedCart = {...prevCart}
+      if(updatedCart[mealId]) {
+        updatedCart[mealId] -= 1
+        if(updatedCart[mealId] <= 0){
+          delete updatedCart[mealId]
+        }
+      }
+      return updatedCart
+    })
+  }
     return (
+      <div>
+        
         <section className="main-content">
         <div className="summary-card">
           <h2>Welcome to Our Restaurant</h2>
@@ -43,10 +72,19 @@ const Menu = () => {
               <h3>{item.name}</h3>
               <p>{item.description}</p>
               <p>{item.price}</p>
+              <div className='cart-controls'>
+                <button onClick={() => removeFromCart(item.id)}>-</button>
+                <span>{cart[item.id] || 0}</span>
+                <button onClick={() => addToCart(item.id)}>+</button>
+
+              </div>
             </div>
           ))}
         </div>
       </section>
+
+      </div>
+        
     )
 }
 
