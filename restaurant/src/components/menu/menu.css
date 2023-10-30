@@ -66,25 +66,27 @@ body {
 
   .cart-controls {
     display: flex;
+    justify-content: space-between;
     align-items: center;
   }
   
   .cart-controls button {
-    background-color: #007bff; /* Blue background color */
-    color: #fff; /* White text color */
+    background-color: #007BFF; /* Button background color */
+    color: #fff; /* Button text color */
     border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
-    margin: 0 10px;
   }
   
   .cart-controls button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3; /* Button background color on hover */
   }
   
-  .cart-controls span {
-    font-size: 18px;
+  .cart-controls input {
+    width: 40px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
   }

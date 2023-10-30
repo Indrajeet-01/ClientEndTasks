@@ -1,14 +1,11 @@
 import React, {useState} from 'react'
 import './header.css'
 import {FaShoppingCart} from 'react-icons/fa'
+import { useCart } from '../reducers/ContextReducer'
 
 
 const Header = () => {
-    const [itemCount, setItemCount] = useState(0); // Initialize cart item count to 0
-
-    const addToCart = () => {
-        setItemCount(itemCount + 1);
-    };
+    const items = useCart() || []
 
     return (
         <header className="navbar">
@@ -23,9 +20,9 @@ const Header = () => {
             <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>
-        <div className="cart" onClick={addToCart}>
+        <div className="cart" >
         <FaShoppingCart style={{ fontSize: 42, color: 'yellow' }} />
-          <span className="item-count">{itemCount}</span>
+          <span className="item-count">{items.length}</span>
         </div>
       </header>
     )

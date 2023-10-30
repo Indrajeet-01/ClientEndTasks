@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import './menu.css'
+import { useCart, useDispatchCart } from '../reducers/ContextReducer';
 
 
 const mealItems = [
@@ -30,32 +31,39 @@ const mealItems = [
   ];
 
 const Menu = () => {
-  const [cart, setCart] = useState({})
+  const cartState = useCart()
+  const dispatch = useDispatchCart()
+  const [itemQuantities, setItemQuantities] = useState({})
 
-  const addToCart = (mealId) => {
-    setCart((prevCart) => {
-      const updatedCart = {...prevCart}
-      if(updatedCart[mealId]) {
-        updatedCart[mealId] += 1
-      } else {
-        updatedCart[mealId] = 1
-      }
-      return updatedCart
+  const calculateFinalPrice = (item, quantity) => {
+    return (parseFloat(item.price.slice(1)) * quantity).toFixed(2); // Assuming price format is $X.XX
+  };
+
+  const addToCart = (item) => {
+    
+    const quantity = itemQuantities[item.id] || 1
+    const finalPrice = calculateFinalPrice(item,quantity)
+
+    dispatch({
+      type: 'ADD_TO_CART',
+      id: item.id,
+      name: item.name,
+      qty: quantity,
+      price: finalPrice,
+      description: item.description,
+
     })
+    
   }
 
-  const removeFromCart = (mealId) => {
-    setCart((prevCart) => {
-      const updatedCart = {...prevCart}
-      if(updatedCart[mealId]) {
-        updatedCart[mealId] -= 1
-        if(updatedCart[mealId] <= 0){
-          delete updatedCart[mealId]
-        }
-      }
-      return updatedCart
-    })
-  }
+  const handleQuantityChange = (event, itemId) => {
+    const newQuantity = parseInt(event.target.value, 10);
+    setItemQuantities({
+      ...itemQuantities,
+      [itemId]: newQuantity,
+    });
+  };
+
     return (
       <div>
         
@@ -72,11 +80,16 @@ const Menu = () => {
               <h3>{item.name}</h3>
               <p>{item.description}</p>
               <p>{item.price}</p>
+              <p>Final Price: ${calculateFinalPrice(item,itemQuantities[item.id] || 1)}</p>
               <div className='cart-controls'>
-                <button onClick={() => removeFromCart(item.id)}>-</button>
-                <span>{cart[item.id] || 0}</span>
-                <button onClick={() => addToCart(item.id)}>+</button>
-
+                <button onClick={() => addToCart(item)}>Add to Cart</button>
+                <input
+                  type="number"
+                  value={itemQuantities[item.id] || 1}
+                  min="1"
+                  step="1"
+                  onChange={(e) => handleQuantityChange(e, item.id)}
+                />
               </div>
             </div>
           ))}
