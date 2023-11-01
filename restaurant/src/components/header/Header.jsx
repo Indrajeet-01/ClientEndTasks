@@ -3,9 +3,17 @@ import './header.css'
 import {FaShoppingCart} from 'react-icons/fa'
 import { useCart } from '../../reducers/ContextReducer'
 import {Link} from 'react-router-dom'
+import Cart from '../../pages/cart/Cart'
+import Menu from '../../pages/menu/Menu'
 
-const Header = ({onCartClick}) => {
+const Header = () => {
     const items = useCart() || []
+
+    const [isCartOpen, setIsCartOpen] = useState(false); 
+
+    const toggleCart = () => {
+      setIsCartOpen((prevState) => !prevState); 
+    };
 
     return (
         <header className="navbar">
@@ -20,7 +28,7 @@ const Header = ({onCartClick}) => {
             <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>
-        <div className="cart"  >
+        <div className="cart" onClick={toggleCart} >
           <Link to='/cart'>
             <FaShoppingCart style={{ fontSize: 42, color: 'yellow' }} />
             <span className="item-count">{items.length}</span>
@@ -28,6 +36,7 @@ const Header = ({onCartClick}) => {
           </Link>
         
         </div>
+        
       </header>
     )
 }

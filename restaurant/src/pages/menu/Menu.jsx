@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, } from 'react'
 import './menu.css'
-import { useCart, useDispatchCart } from '../../reducers/ContextReducer';
+import { useDispatchCart } from '../../reducers/ContextReducer';
 
 
 const mealItems = [
@@ -31,7 +31,7 @@ const mealItems = [
   ];
 
 const Menu = () => {
-  const cartState = useCart()
+  
   const dispatch = useDispatchCart()
   const [itemQuantities, setItemQuantities] = useState({})
 
