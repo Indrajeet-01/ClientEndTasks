@@ -1,31 +1,31 @@
 import React, { useState, useRef } from 'react'
 import './menu.css'
-import { useCart, useDispatchCart } from '../reducers/ContextReducer';
+import { useCart, useDispatchCart } from '../../reducers/ContextReducer';
 
 
 const mealItems = [
     {
       id: 1,
-      name: 'Meal 1',
-      description: 'Description of Meal 1',
+      name: 'Cheese Burger',
+      description: 'with extra cheese',
       price: '$10.99',
     },
     {
       id: 2,
-      name: 'Meal 2',
-      description: 'Description of Meal 2',
+      name: 'Veg roll',
+      description: 'chopped with green vegetables',
       price: '$12.99',
     },
     {
       id: 3,
-      name: 'Meal 3',
-      description: 'Description of Meal 3',
+      name: 'Dosa',
+      description: 'serving healthy dosa',
       price: '$9.99',
     },
     {
       id: 4,
-      name: 'Meal 4',
-      description: 'Description of Meal 4',
+      name: 'Brocalli soup',
+      description: 'good for mental freshness',
       price: '$11.99',
     },
   ];

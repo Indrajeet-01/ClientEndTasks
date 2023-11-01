@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import './header.css'
 import {FaShoppingCart} from 'react-icons/fa'
-import { useCart } from '../reducers/ContextReducer'
+import { useCart } from '../../reducers/ContextReducer'
+import {Link} from 'react-router-dom'
 
-
-const Header = () => {
+const Header = ({onCartClick}) => {
     const items = useCart() || []
 
     return (
@@ -20,9 +20,13 @@ const Header = () => {
             <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>
-        <div className="cart" >
-        <FaShoppingCart style={{ fontSize: 42, color: 'yellow' }} />
-          <span className="item-count">{items.length}</span>
+        <div className="cart"  >
+          <Link to='/cart'>
+            <FaShoppingCart style={{ fontSize: 42, color: 'yellow' }} />
+            <span className="item-count">{items.length}</span>
+
+          </Link>
+        
         </div>
       </header>
     )

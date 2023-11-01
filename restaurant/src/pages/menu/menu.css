@@ -1,11 +1,9 @@
 /* Main.css */
-body {
-    background: url('https://unsplash.com/photos/macro-shot-of-vegetable-lot-4_jhDO54BYg');
-    background-size: cover;
-  }
+
   
   .main-content {
-    background-color: rgba(255, 204, 0, 0.7); /* Attractive yellow overlay color */
+    background: url('../../../public/images/back-image.jpeg');
+    background-size: cover;
     padding: 20px;
     text-align: center;
   }

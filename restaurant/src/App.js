@@ -1,22 +1,32 @@
+import { useState } from "react";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import Menu from "./components/menu/Menu";
-import { CartProvider } from "./components/reducers/ContextReducer";
+import Menu from "./pages/menu/Menu";
+import { CartProvider } from "./reducers/ContextReducer";
+import Cart from "./pages/cart/Cart";
+import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
 
 
 
 function App() {
+  
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
       <CartProvider>
-        <Header/>
-        <main>
-          <Menu/>
-        </main>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Menu/>} />
+          <Route path="/cart" element={<Cart/>} />
+
+        </Routes>
         <Footer/>
       </CartProvider>
       
     </div>
+
+    </Router>
+    
   );
 }
 
