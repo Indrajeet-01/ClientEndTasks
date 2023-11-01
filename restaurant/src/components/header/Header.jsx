@@ -5,15 +5,17 @@ import { useCart } from '../../reducers/ContextReducer'
 import {Link} from 'react-router-dom'
 import Cart from '../../pages/cart/Cart'
 import Menu from '../../pages/menu/Menu'
+import Modal from '../modal/Modal'
 
 const Header = () => {
     const items = useCart() || []
 
-    const [isCartOpen, setIsCartOpen] = useState(false); 
+    const [cartView, setCartView] = useState(false)
+    const loadCart = () => {
+      setCartView(true)
+  }
 
-    const toggleCart = () => {
-      setIsCartOpen((prevState) => !prevState); 
-    };
+    
 
     return (
         <header className="navbar">
@@ -28,13 +30,15 @@ const Header = () => {
             <li><a href="/contact">Contact</a></li>
           </ul>
         </nav>
-        <div className="cart" onClick={toggleCart} >
-          <Link to='/cart'>
-            <FaShoppingCart style={{ fontSize: 42, color: 'yellow' }} />
-            <span className="item-count">{items.length}</span>
-
-          </Link>
-        
+        <div>
+        <div className="cart" onClick={loadCart} >
+          
+          <FaShoppingCart style={{ fontSize: 42, color: 'yellow' }} />
+          <span className="item-count">{items.length}</span>
+          
+      </div>
+      {cartView ? <Modal onClose={() => setCartView(false)}><Cart></Cart></Modal> : ""}
+      
         </div>
         
       </header>
