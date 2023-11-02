@@ -36,7 +36,7 @@ const Menu = () => {
   const [itemQuantities, setItemQuantities] = useState({})
 
   const calculateFinalPrice = (item, quantity) => {
-    return (parseFloat(item.price.slice(1)) * quantity).toFixed(2); // Assuming price format is $X.XX
+    return (parseFloat(item.price.slice(1)) * quantity).toFixed(2); 
   };
 
   const addToCart = (item) => {
@@ -71,7 +71,7 @@ const Menu = () => {
         <div className="summary-card">
           <h2>Welcome to Our Restaurant</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            We serve healthy and delicious food. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
         <div className="meal-cards">

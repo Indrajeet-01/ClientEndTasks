@@ -1,0 +1,63 @@
+/* Styling for the Menu component */
+
+.main-content {
+  background-size: cover;
+  padding: 20px;
+  text-align: center;
+}
+
+.meal-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.meal-table th {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+}
+
+.meal-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.cart-quantity {
+  width: 40px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.add-to-cart-button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart-button:hover {
+  background-color: #0056b3;
+}
+
+/* Optional styles for better alignment and spacing */
+.meal-table th:first-child,
+.meal-table td:first-child {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.meal-table th:nth-child(3),
+.meal-table td:nth-child(3) {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.meal-table td:last-child {
+  font-weight: bold;
+}
