@@ -2,9 +2,9 @@ import React, {useState} from 'react'
 import './header.css'
 import {FaShoppingCart} from 'react-icons/fa'
 import { useCart } from '../../reducers/ContextReducer'
-import {Link} from 'react-router-dom'
+
 import Cart from '../../pages/cart/Cart'
-import Menu from '../../pages/menu/Menu'
+
 import Modal from '../modal/Modal'
 
 const Header = () => {
