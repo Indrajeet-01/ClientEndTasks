@@ -1,5 +1,7 @@
 import React from 'react';
 import './products.css'
+import { useProductsContext } from '../../reducers/ContextReducer';
+
 
 const productsArr = [
   {
@@ -25,6 +27,15 @@ const productsArr = [
 ];
 
 const HomePage = () => {
+    const { dispatch } = useProductsContext() // Access the dispatch function from the context
+
+
+  // Function to add a product to the cart
+  const addToCart = (product) => {
+    dispatch({ type: 'ADD_TO_CART', payload: product });
+  };
+
+    
   return (
     <div className="home-page">
       <h1>Welcome to Our E-commerce Store</h1>
@@ -35,7 +46,7 @@ const HomePage = () => {
             <img src={product.imageUrl} alt={product.title} />
             <div className="product-details">
               <p className="price">${product.price}</p>
-              <button className="add-to-cart">Add to Cart</button>
+              <button className="add-to-cart" onClick={() => addToCart(product)} >Add to Cart</button>
             </div>
           </div>
         ))}

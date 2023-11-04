@@ -52,16 +52,31 @@ header {
     cursor: pointer;
   }
   
-  /* Shopping Cart Styles */
-  .cart a {
-    text-decoration: none;
-    color: #fff;
+ /* Cart.css */
+
+.cart {
     display: flex;
     align-items: center;
   }
   
   .cart i {
-    font-size: 24px; /* Adjust the size of the cart icon */
-    margin-right: 5px;
+    font-size: 32px; /* Increase the icon size */
+    color: #ff5733; /* Change the icon color to your desired color */
+    margin-right: 5px; /* Adjust the margin as needed */
   }
   
+  .cart a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .item-count {
+    background-color: #ff5733;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 14px;
+    padding: 8px 12px; /* Adjust the padding to fit the larger icon */
+    margin-left: 5px; 
+    
+    /* Adjust the margin as needed */
+  }
