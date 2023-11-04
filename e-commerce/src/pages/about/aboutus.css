@@ -1,28 +1,33 @@
 /* AboutUs.css */
 
+/* AboutUs.css */
+
 .about-us {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
   
   h1 {
     font-size: 36px;
-    color: #333;
+    color: #007bff;
     margin-bottom: 20px;
   }
   
   p {
-    font-size: 16px;
-    color: #666;
+    font-size: 18px;
+    color: #333;
     margin-bottom: 20px;
     line-height: 1.6;
   }
   
   h2 {
     font-size: 24px;
-    color: #333;
+    color: #007bff;
     margin-top: 20px;
   }
   
@@ -35,11 +40,12 @@
   .social-links a {
     text-decoration: none;
     margin: 0 10px;
-    color: #333;
+    color: #007bff;
+    transition: color 0.3s ease;
   }
   
   .social-links a:hover {
-    color: #007bff;
+    color: #ff5733;
   }
   
   /* Add the rest of your existing CSS styles */

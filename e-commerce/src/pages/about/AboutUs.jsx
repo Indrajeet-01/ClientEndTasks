@@ -5,12 +5,12 @@ import 'font-awesome/css/font-awesome.min.css';
 const AboutUs = () => {
   return (
     <div className="about-us">
-      <h1>About [Your Company Name]</h1>
+      <h1>About Legends Choice</h1>
       <p>
-        Welcome to [Your Company Name], your trusted source for high-quality products and services in [Your Industry]. Our mission is to [Your Mission or Values].
+        Welcome to Legends Choice, your trusted source for high-quality products and services in e-commerce market. Our mission is to [Your Mission or Values].
       </p>
       <p>
-        At [Your Company Name], we offer a wide range of products and services that cater to your [Product/Service Category] needs. Whether you're looking for [Specific Products/Services], we've got you covered.
+        At Legends Choice, we offer a wide range of products and services that cater to your [Product/Service Category] needs. Whether you're looking for [Specific Products/Services], we've got you covered.
       </p>
       <p>
         Our dedicated team works diligently to ensure that you receive the best products, outstanding customer service, and a seamless shopping experience.
