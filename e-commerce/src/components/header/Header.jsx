@@ -16,9 +16,9 @@ const Header = () => {
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
-          <li><a href="/products">Products</a></li>
+          <li><Link to="/products">Products</Link></li>
           <li><a href="/categories">Categories</a></li>
-          <li><a href="/about">About Us</a></li>
+          <li><Link to="/about">About Us</Link></li>
         </ul>
       </nav>
       <div className="search-bar">

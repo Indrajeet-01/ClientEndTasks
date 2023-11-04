@@ -26,7 +26,7 @@ const productsArr = [
   },
 ];
 
-const HomePage = () => {
+const Products = () => {
     const { dispatch } = useProductsContext() // Access the dispatch function from the context
 
 
@@ -55,4 +55,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Products;

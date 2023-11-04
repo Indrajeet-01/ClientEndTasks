@@ -44,7 +44,12 @@ const Cart = () => {
           <tbody>
             {cart.map((product, index) => (
               <tr key={index}>
-                <td>{product.title}</td>
+                <td>
+                    <div className="product-container">
+                    <img src={product.imageUrl} alt={product.title} className="product-image" />
+                    <div className="product-title">{product.title}</div>
+                    </div>
+                </td>
                 <td>${product.price}</td>
                 <td>
                   <input

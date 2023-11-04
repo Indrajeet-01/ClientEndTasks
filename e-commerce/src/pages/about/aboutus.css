@@ -1,0 +1,46 @@
+/* AboutUs.css */
+
+.about-us {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .social-links {
+    font-size: 24px;
+    color: #333;
+    margin: 20px 0;
+  }
+  
+  .social-links a {
+    text-decoration: none;
+    margin: 0 10px;
+    color: #333;
+  }
+  
+  .social-links a:hover {
+    color: #007bff;
+  }
+  
+  /* Add the rest of your existing CSS styles */
+  
