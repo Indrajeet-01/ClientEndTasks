@@ -1,0 +1,68 @@
+/* HomePage.css */
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 18px;
+    color: #007bff;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  /* HomePage.css */
+
+/* Existing styles */
+
+.play-button {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .play-button i {
+    font-size: 48px;
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .play-button i:hover {
+    color: #ff5733;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #ff5733;
+  }
+  
+  /* Add the rest of your existing CSS styles */
+  
