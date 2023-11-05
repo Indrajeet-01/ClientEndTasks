@@ -14,10 +14,6 @@ h1 {
     text-align: center;
   }
 
-  /* HomePage.css */
-
-/* Existing styles */
-
 .play-button {
     text-align: center;
     margin-top: 20px;
@@ -33,14 +29,22 @@ h1 {
     color: #ff5733;
   }
   
-  table {
-    width: 100%;
+/* Center the table and adjust its width */
+table {
+    margin: 0 auto;
+    width: 70%;
     border-collapse: collapse;
     margin-top: 20px;
   }
   
+  /* Remove border for table rows except the first one */
+  table tr:not(:first-child) {
+    border: none;
+    border-bottom: 1px solid #ddd; /* Add a single horizontal line */
+  }
+  
+  /* Style the table header and cells */
   th, td {
-    border: 1px solid #ddd;
     padding: 10px;
     text-align: center;
   }
@@ -50,10 +54,12 @@ h1 {
     color: #fff;
   }
   
+  /* Even rows will have a background color */
   tr:nth-child(even) {
     background-color: #f2f2f2;
   }
   
+  /* Style the links */
   a {
     text-decoration: none;
     color: #007bff;

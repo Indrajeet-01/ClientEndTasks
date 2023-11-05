@@ -43,10 +43,12 @@ const toursData = [
 const HomePage = () => {
   return (
     <div>
-      <h1>Get our Latest Album</h1>
-      <div className="play-button">
-        <i className="fa fa-play-circle"></i>
-      </div>
+      <div className="content-container">
+  <h1>Get our Latest Album</h1>
+  <div className="play-button">
+    <i className="fa fa-play-circle"></i>
+  </div>
+</div>
       <h2>TOURS</h2>
       <table>
         <thead>
