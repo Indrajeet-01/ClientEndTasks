@@ -5,6 +5,7 @@ import Cart from "./pages/cart/Cart";
 import { ProductsContextProvider } from "./reducers/ContextReducer";
 import AboutUs from "./pages/about/AboutUs";
 import HomePage from "./pages/home/Home";
+import ContactUs from "./pages/contact/ContactUs";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<HomePage/>} />
           <Route path="/products" element={<Products/>} />
           <Route path="/cart" element={<Cart/>} />
+          <Route path="/contact" element={<ContactUs/>} />
           <Route path="/about" element={<AboutUs/>} />
         </Routes>
       
