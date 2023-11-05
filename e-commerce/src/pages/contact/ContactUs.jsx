@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './contactUs.css'
-
+import { db } from '../../firebase';
+import { collection, addDoc } from 'firebase/firestore'; 
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -17,15 +18,13 @@ const ContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
 
     try {
-      const response = await axios.post(
-        'YOUR_FIREBASE_DATABASE_URL', // Replace with your Firebase database URL
-        formData
-      );
-
-      console.log('Data successfully stored:', response.data);
-      // You can add further logic here, e.g., showing a success message.
+        const userContactCollection = collection(db, 'UserContact'); // Use 'collection' to access the collection
+      await addDoc(userContactCollection, formData); // Use the addDoc method to add a document
+  
+        console.log('Contact details stored in Firestore');
     } catch (error) {
       console.error('Error storing data:', error);
       // Handle errors, e.g., show an error message to the user.

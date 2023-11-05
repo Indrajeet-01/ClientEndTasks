@@ -1,23 +1,17 @@
-// Import the functions you need from the SDKs you need
-import firebase from "firebase/compat/app"
-import "firebase/compat/storage"
-import "firebase/compat/database"; // For Realtime Database
-import "firebase/compat/firestore"; // For Firestore
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAMa1MgWb2DGt9RayPGkOn_6qUHhNFCnxA",
-  authDomain: "e-commerce-4140f.firebaseapp.com",
-  projectId: "e-commerce-4140f",
-  storageBucket: "e-commerce-4140f.appspot.com",
-  messagingSenderId: "342801146009",
-  appId: "1:342801146009:web:b488d6a400b2458dbb5808",
-  measurementId: "G-CVLW8PDD2M"
-};
+    apiKey: "AIzaSyD8pV1U8163zbcKsZOmO1cBALqlu1kbMCA",
+    authDomain: "e-commerce-3c33f.firebaseapp.com",
+    projectId: "e-commerce-3c33f",
+    storageBucket: "e-commerce-3c33f.appspot.com",
+    messagingSenderId: "766483714277",
+    appId: "1:766483714277:web:7ba4e9200151edc0ec440c",
+    measurementId: "G-RTNTHE4PR1"
+  };
 
-// Initialize Firebase
-const firebaseapp = firebase.initializeApp(firebaseConfig);
-export const collection = firebaseapp.collection();
+const firebaseApp = initializeApp(firebaseConfig);
+export const db = getFirestore(firebaseApp);
+
+
