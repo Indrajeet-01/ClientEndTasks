@@ -6,6 +6,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    height: 100px;
   }
   
   /* Logo Styles */
@@ -30,29 +31,7 @@ header {
     color: #fff;
   }
   
-  /* Search Bar Styles */
-  .search-bar {
-    display: flex;
-  }
-  
-  .search-bar input[type="text"] {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
-    width: 200px;
-  }
-  
-  .search-bar button {
-    background-color: #007bff; /* Button color */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
- /* Cart.css */
+
 
 .cart {
     display: flex;

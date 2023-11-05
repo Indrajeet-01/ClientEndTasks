@@ -1,15 +1,9 @@
 import React from 'react';
-import './header.css'
-import 'font-awesome/css/font-awesome.min.css';
-import { useProductsContext } from '../../reducers/ContextReducer';
+import './header.css';
+import { connect } from 'react-redux'; // Import connect
 import { Link } from 'react-router-dom';
 
-
-const Header = () => {
-    const { state } = useProductsContext(); // Access the cart state from the context
-  const { cart } = state;
-
-    
+const Header = ({ cart }) => {
   return (
     <header>
       <div className="logo">Legends Choice</div>
@@ -21,21 +15,22 @@ const Header = () => {
           <li><Link to="/about">About Us</Link></li>
         </ul>
       </nav>
-      <div className="search-bar">
-        <input type="text" placeholder="Search products" />
-        <button>Search</button>
-      </div>
+
       <div className="cart">
-        
-            <Link to='/cart'>
-            <i className="fa fa-shopping-cart"></i> 
-            <span className="item-count">{cart.length}</span>
-            </Link>
-          
-        
+        <Link to='/cart'>
+          <i className="fa fa-shopping-cart"></i>
+          <span className="item-count">{cart.length}</span>
+        </Link>
       </div>
     </header>
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart.cart, // Map cart state from Redux store
+  };
+};
+
+export default connect(mapStateToProps)(Header);
+

@@ -1,28 +1,13 @@
-import React, { useContext } from 'react';
-import { ProductsContext } from '../../reducers/ContextReducer';
+import React from 'react';
+import { connect } from 'react-redux'; // Import connect
+import { removeFromCart, updateQuantity, clearCart } from '../../redux/actions'; // Import Redux actions
 import './cart.css';
 
-const Cart = () => {
-  const { state, dispatch } = useContext(ProductsContext);
-  const { cart } = state;
-
-  const removeFromCart = (product) => {
-    dispatch({ type: 'REMOVE_FROM_CART', payload: product });
-  };
-
-  const updateQuantity = (product, quantity) => {
-    dispatch({ type: 'UPDATE_QUANTITY', payload: { product, quantity } });
-  };
-
-  const clearCart = () => {
-    dispatch({ type: 'CLEAR_CART' });
-  };
-
+const Cart = ({ cart, removeFromCart, updateQuantity, clearCart }) => {
   const calculateTotalPrice = () => {
     return cart.reduce((total, product) => {
       return total + product.price * (product.quantity || 1);
     }, 0);
-    
   };
 
   return (
@@ -45,10 +30,10 @@ const Cart = () => {
             {cart.map((product, index) => (
               <tr key={index}>
                 <td>
-                    <div className="product-container">
+                  <div className="product-container">
                     <img src={product.imageUrl} alt={product.title} className="product-image" />
                     <div className="product-title">{product.title}</div>
-                    </div>
+                  </div>
                 </td>
                 <td>${product.price}</td>
                 <td>
@@ -66,17 +51,23 @@ const Cart = () => {
               </tr>
             ))}
           </tbody>
-          
         </table>
       )}
       {cart.length > 0 && (
         <div className="cart-footer">
           <p className="total-price">Total Price: ${calculateTotalPrice()}</p>
           <button className="checkout-button">Checkout</button>
+          <button onClick={clearCart}>Clear Cart</button>
         </div>
       )}
     </div>
   );
 };
 
-export default Cart;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart.cart, // Map cart state from Redux store
+  };
+};
+
+export default connect(mapStateToProps, { removeFromCart, updateQuantity, clearCart })(Cart);
