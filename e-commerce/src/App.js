@@ -12,18 +12,19 @@ import Cart from "./pages/cart/Cart";
 import Products from './pages/products/Products'
 import ProductDetail from "./pages/productDetail/ProductDetail";
 
+
 const products = [
   {
     id: 1,
-    name: 'Product 1',
+    name: 'Denim Jacket',
     price: 19.99,
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    description: 'most demanding aqua blue denim jacket for men.',
     rating: 4.5,
-    category: 'Electronics',
+    category: 'Clothes',
     stock: 10,
     images: [
-      'product1-image1.jpg',
-      'product1-image2.jpg',
+      'https://5.imimg.com/data5/NR/ON/MY-57009823/men-27s-denim-jackets.jpg',
+      'https://data.glamood.com/imgprodotto/denim-nhill-tw-jacket_922576_zoom.jpg',
     ],
     reviews: [
       {
@@ -40,14 +41,14 @@ const products = [
   },
   {
     id: 2,
-    name: 'Product 2',
+    name: 'Blue Jeans',
     price: 24.99,
-    description: 'Suspendisse potenti. Nulla accumsan.',
+    description: 'blue stylish jeans for men',
     rating: 3.8,
-    category: 'Clothing',
+    category: 'Clothes',
     stock: 5,
     images: [
-      'product2-image1.jpg',
+      'https://assets.ajio.com/medias/sys_master/root/20210923/ovv7/614b7854f997ddce89d75509/-473Wx593H-469009841-blue-MODEL.jpg',
       'product2-image2.jpg',
     ],
     reviews: [
@@ -60,14 +61,14 @@ const products = [
   },
   {
     id: 3,
-    name: 'Product 3',
+    name: 't-shirt',
     price: 29.99,
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    description: 'modal sports t-shirt ',
     rating: 4.2,
-    category: 'Electronics',
+    category: 'Clothes',
     stock: 15,
     images: [
-      'product3-image1.jpg',
+      'https://fullyfilmy.in/cdn/shop/products/New-Mockups---no-hanger---TShirt-Yellow.jpg?v=1639657077',
       'product3-image2.jpg',
     ],
     reviews: [
@@ -85,14 +86,14 @@ const products = [
   },
   {
     id: 4,
-    name: 'Product 4',
+    name: 'Trouser',
     price: 14.99,
-    description: 'Aenean ac elit mauris.',
+    description: 'adidas sports trouser ',
     rating: 4.0,
-    category: 'Furniture',
+    category: 'Sports wear',
     stock: 7,
     images: [
-      'product4-image1.jpg',
+      'https://assets.ajio.com/medias/sys_master/root/20221208/YiJR/6391c089aeb269659cde0f34/-473Wx593H-469211195-silver-MODEL.jpg',
       'product4-image2.jpg',
     ],
     reviews: [
@@ -105,14 +106,14 @@ const products = [
   },
   {
     id: 5,
-    name: 'Product 5',
+    name: 'Hoody',
     price: 39.99,
-    description: 'Vivamus tristique malesuada odio.',
+    description: 'latest light blue hoody give a dashing look',
     rating: 4.8,
-    category: 'Electronics',
+    category: 'Clothes',
     stock: 12,
     images: [
-      'product5-image1.jpg',
+      'https://images.macmerise.com/product/hoodies/chmsh6whateverittakes.jpg',
       'product5-image2.jpg',
     ],
     reviews: [
@@ -130,14 +131,14 @@ const products = [
   },
   {
     id: 6,
-    name: 'Product 6',
+    name: 'Sneakers',
     price: 22.50,
-    description: 'In hac habitasse platea dictumst.',
+    description: 'nike white sneakers for sports',
     rating: 3.7,
-    category: 'Clothing',
+    category: 'Footwear',
     stock: 8,
     images: [
-      'product6-image1.jpg',
+      'https://www.campusshoes.com/cdn/shop/products/CAMPDENVER_TRIPLEWHT_1200x1200.jpg?v=1670325511',
       'product6-image2.jpg',
     ],
     reviews: [

@@ -1,14 +1,22 @@
 import React from 'react';
-import { useCart } from '../../store'; // Import the useCart hook from your context provider
+import { useCart } from '../../store';
 import './cart.css';
 
 const Cart = () => {
-  const { cart, removeFromCart, updateQuantity, clearCart } = useCart(); // Use the useCart hook to access cart data and functions
+  const { cart, dispatch } = useCart();
 
   const calculateTotalPrice = () => {
-    return cart.reduce((total, product) => {
-      return total + product.price * (product.quantity || 1);
+    return cart.reduce((total, cartItem) => {
+      return total + cartItem.product.price * (cartItem.quantity || 1);
     }, 0);
+  };
+
+  const handleQuantityChange = (productId, quantity) => {
+    dispatch({ type: 'UPDATE_QUANTITY', productId, quantity: parseInt(quantity, 10) });
+  };
+
+  const handleRemoveFromCart = (productId) => {
+    dispatch({ type: 'REMOVE_FROM_CART', productId });
   };
 
   return (
@@ -28,26 +36,26 @@ const Cart = () => {
             </tr>
           </thead>
           <tbody>
-            {cart.map((product, index) => (
+            {cart.map((cartItem, index) => (
               <tr key={index}>
                 <td>
                   <div className="product-container">
-                    <img src={product.imageUrl} alt={product.title} className="product-image" />
-                    <div className="product-title">{product.name}</div>
+                    <img src={cartItem.product.images[0]} className="product-image" />
+                    <div className="product-title">{cartItem.product.name}</div>
                   </div>
                 </td>
-                <td>${product.price}</td>
+                <td>${cartItem.product.price}</td>
                 <td>
                   <input
                     type="number"
                     min="1"
-                    value={product.quantity || 1}
-                    onChange={(e) => updateQuantity(product, e.target.value)}
+                    value={cartItem.quantity || 1}
+                    onChange={(e) => handleQuantityChange(cartItem.product.id, e.target.value)}
                   />
                 </td>
-                <td>${product.price * (product.quantity || 1)}</td>
+                <td>${cartItem.product.price * (cartItem.quantity || 1)}</td>
                 <td>
-                  <button onClick={() => removeFromCart(product)}>Remove</button>
+                  <button onClick={() => handleRemoveFromCart(cartItem.product.id)}>Remove</button>
                 </td>
               </tr>
             ))}
@@ -58,7 +66,7 @@ const Cart = () => {
         <div className="cart-footer">
           <p className="total-price">Total Price: ${calculateTotalPrice()}</p>
           <button className="checkout-button">Checkout</button>
-          <button onClick={clearCart}>Clear Cart</button>
+          <button onClick={() => dispatch({ type: 'CLEAR_CART' })}>Clear Cart</button>
         </div>
       )}
     </div>
