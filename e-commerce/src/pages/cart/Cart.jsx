@@ -1,9 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux'; // Import connect
-import { removeFromCart, updateQuantity, clearCart } from '../../redux/actions'; // Import Redux actions
+import { useCart } from '../../store'; // Import the useCart hook from your context provider
 import './cart.css';
 
-const Cart = ({ cart, removeFromCart, updateQuantity, clearCart }) => {
+const Cart = () => {
+  const { cart, removeFromCart, updateQuantity, clearCart } = useCart(); // Use the useCart hook to access cart data and functions
+
   const calculateTotalPrice = () => {
     return cart.reduce((total, product) => {
       return total + product.price * (product.quantity || 1);
@@ -32,7 +33,7 @@ const Cart = ({ cart, removeFromCart, updateQuantity, clearCart }) => {
                 <td>
                   <div className="product-container">
                     <img src={product.imageUrl} alt={product.title} className="product-image" />
-                    <div className="product-title">{product.title}</div>
+                    <div className="product-title">{product.name}</div>
                   </div>
                 </td>
                 <td>${product.price}</td>
@@ -64,10 +65,4 @@ const Cart = ({ cart, removeFromCart, updateQuantity, clearCart }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    cart: state.cart.cart, // Map cart state from Redux store
-  };
-};
-
-export default connect(mapStateToProps, { removeFromCart, updateQuantity, clearCart })(Cart);
+export default Cart;

@@ -1,9 +1,11 @@
 import React from 'react';
 import './header.css';
-import { connect } from 'react-redux'; // Import connect
-import { Link } from 'react-router-dom';
 
-const Header = ({ cart }) => {
+import { Link } from 'react-router-dom';
+import { useCart } from '../../store';
+
+const Header = () => {
+  const {cart} = useCart()
   return (
     <header>
       <div className="logo">Legends Choice</div>
@@ -26,11 +28,5 @@ const Header = ({ cart }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    cart: state.cart.cart, // Map cart state from Redux store
-  };
-};
-
-export default connect(mapStateToProps)(Header);
+export default Header
 

@@ -1,43 +1,43 @@
-// Product.js
+import React, {useContext} from "react";
+import { useParams } from "react-router-dom";
+import { CartContext } from "../../store";
+const ProductDetail = ({ products }) => {
+    const { id } = useParams(); 
+    console.log(id) // Access the "id" parameter from the URL
+    const productId = parseInt(id, 10);
+    console.log(productId)
+  const product = products.find((p) => p.id === productId);
+  console.log(products)
+  console.log(product)
 
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+  const { dispatch } = useContext(CartContext); // Access the addToCart function from the cart context
 
-const ProductDetail = () => {
-  const { productId } = useParams(); // Get the product ID from the URL
-  const product = useSelector((state) => state.products.find((p) => p.id === productId));
-
-  if (!product) {
-    return <div>Product not found</div>;
-  }
-
+  const handleAddToCart = () => {
+    // Dispatch an action to add the product to the cart
+    dispatch({
+      type: "ADD_TO_CART",
+      product: product,
+      quantity: 1, // You can adjust the quantity as needed
+    });
+  };
   return (
-    <div className="product">
-      <h2>{product.name}</h2>
+    <div>
+      <h1>{product.name}</h1>
+      <img src={product.images[0]}  />
       <p>Price: ${product.price}</p>
       <p>Description: {product.description}</p>
-      <p>Rating: {product.rating}</p>
       <p>Category: {product.category}</p>
+      <p>Rating: {product.rating}</p>
       <p>Stock: {product.stock}</p>
-      <p>Number of Reviews: {product.reviews.length}</p>
-
-      <div className="product-images">
-        {product.images.map((image, index) => (
-          <img key={index} src={image} alt={`Product ${index}`} />
-        ))}
-      </div>
-
-      <div className="product-reviews">
-        <h3>Product Reviews</h3>
+      <p>Reviews:</p>
+      <ul>
         {product.reviews.map((review, index) => (
-          <div key={index} className="review">
-            <p>{review.author}</p>
-            <p>{review.rating} stars</p>
-            <p>{review.text}</p>
-          </div>
+          <li key={index}>
+            <strong>{review.author}:</strong> {review.text}
+          </li>
         ))}
-      </div>
+      </ul>
+      <button onClick={handleAddToCart}>Add to Cart</button>
     </div>
   );
 };
