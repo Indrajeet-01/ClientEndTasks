@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
-import { Provider } from "react-redux";
-import store, { CartProvider } from "./store";
+
+import  { CartProvider } from "./context/store";
+import { AuthProvider } from "./context/auth";
 import Header from "./components/header/Header";
 
 
@@ -11,6 +12,7 @@ import ContactUs from "./pages/contact/ContactUs";
 import Cart from "./pages/cart/Cart";
 import Products from './pages/products/Products'
 import ProductDetail from "./pages/productDetail/ProductDetail";
+import UserAuth from "./pages/userAuth/UserAuth";
 
 
 const products = [
@@ -111,7 +113,7 @@ const products = [
     description: 'latest light blue hoody give a dashing look',
     rating: 4.8,
     category: 'Clothes',
-    stock: 12,
+    stock: 0,
     images: [
       'https://images.macmerise.com/product/hoodies/chmsh6whateverittakes.jpg',
       'product5-image2.jpg',
@@ -170,6 +172,7 @@ function App() {
           <Route path="/cart" element={<Cart/>} />
           <Route path="/contact" element={<ContactUs/>} />
           <Route path="/about" element={<AboutUs/>} />
+          <Route path="/auth" element={<UserAuth/>} />
         </Routes>
       
       </div>

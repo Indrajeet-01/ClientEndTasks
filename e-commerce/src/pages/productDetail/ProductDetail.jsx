@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import { useParams } from "react-router-dom";
-import { CartContext } from "../../store";
+import { CartContext } from "../../context/store";
 import './productDetail.css'
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -26,7 +26,7 @@ const ProductDetail = ({ products }) => {
     });
   };
 
-  const stockStatus = product.stock > 0 ? "In stock" : "Out of stock";
+  
   return (
     <div className="product-detail-container">
       <div className="product-image-slider">

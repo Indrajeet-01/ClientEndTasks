@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+
 import './contactUs.css'
 import { db } from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore'; 
