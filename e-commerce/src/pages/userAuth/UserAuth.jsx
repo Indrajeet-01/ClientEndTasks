@@ -3,20 +3,33 @@ import React, { useState } from 'react';
 import {  useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import './userAuth.css'
+import { useAuth } from '../../context/auth';
+
+const auth = getAuth()
 
 const UserAuth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isSignUp, setIsSignUp] = useState(false); // Indicates whether the user is signing up
+  const { dispatch } = useAuth();
 
   const navigate = useNavigate()
 
   const handleSignIn = () => {
-    const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        navigate('/products');
+      .then(async (userCredential) => {
+        // The user is signed in, now get the token
+        const user = userCredential.user;
+        try {
+          const token = await user.getIdToken(); // Get the user's token
+          // Store the token in your AuthContext
+          dispatch({ type: 'SIGN_IN', user, token });
+          // Navigate to the desired route
+          navigate('/products');
+        } catch (error) {
+          console.error(error);
+        }
       })
       .catch(error => {
         console.error(error);
@@ -25,10 +38,19 @@ const UserAuth = () => {
 
   const handleSignUp = () => {
     if (password === confirmPassword) {
-      const auth = getAuth();
       createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          navigate('/products');
+        .then(async (userCredential) => {
+          // The user is signed up, now get the token
+          const user = userCredential.user;
+          try {
+            const token = await user.getIdToken(); // Get the user's token
+            // Store the token in your AuthContext
+            dispatch({ type: 'SIGN_IN', user, token });
+            // Navigate to the desired route
+            navigate('/products');
+          } catch (error) {
+            console.error(error);
+          }
         })
         .catch(error => {
           console.error(error);

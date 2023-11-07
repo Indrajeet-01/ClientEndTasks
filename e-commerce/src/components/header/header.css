@@ -32,9 +32,15 @@ header {
   }
   
 
-
+.authUser{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
 .cart {
     display: flex;
+    flex-direction: row;
     align-items: center;
   }
   
@@ -58,4 +64,18 @@ header {
     margin-left: 5px; 
     
     /* Adjust the margin as needed */
+  }
+
+  .sign-out-button {
+    background-color: #ff0000; /* Choose your desired background color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /* Add margin to separate it from the cart icon */
+  }
+  
+  .sign-out-button:hover {
+    background-color: #cc0000; /* Choose a darker color for hover effect */
   }

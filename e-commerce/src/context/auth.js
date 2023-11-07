@@ -6,11 +6,13 @@ export const AuthContext = createContext();
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'SIGN_IN':
-      // Handle user sign-in
-      return { ...state, user: action.user };
+      // Handle user sign-in and store the token
+      localStorage.setItem('token', action.token);
+      return { ...state, user: action.user, token: action.token };
     case 'SIGN_OUT':
-      // Handle user sign-out
-      return { ...state, user: null };
+      // Handle user sign-out and clear the token
+      localStorage.removeItem('token');
+      return { ...state, user: null, token: null };
     default:
       return state;
   }
@@ -21,7 +23,12 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [authState, dispatch] = useReducer(authReducer, { user: null });
+  // Load the token from local storage when the app starts
+  const storedToken = localStorage.getItem('token');
+  const [authState, dispatch] = useReducer(authReducer, {
+    user: null,
+    token: storedToken, // Initialize the token from local storage
+  });
 
   return (
     <AuthContext.Provider value={{ authState, dispatch }}>
