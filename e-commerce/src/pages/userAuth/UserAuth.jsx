@@ -16,7 +16,7 @@ const UserAuth = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        navigate('/');
+        navigate('/products');
       })
       .catch(error => {
         console.error(error);
@@ -28,7 +28,7 @@ const UserAuth = () => {
       const auth = getAuth();
       createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-          navigate('/');
+          navigate('/products');
         })
         .catch(error => {
           console.error(error);

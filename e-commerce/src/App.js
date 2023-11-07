@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
 
 import  { CartProvider } from "./context/store";
-import { AuthProvider } from "./context/auth";
+import { AuthProvider, useAuth } from "./context/auth";
 import Header from "./components/header/Header";
 
 
@@ -160,24 +160,31 @@ const products = [
 
 
 function App() {
+  
   return (
     <Router>
-      <CartProvider >
+      <AuthProvider>
+        
+        <CartProvider >
       <div className="App">
-      <Header/>
+         <Header/> 
+      
         <Routes>
-          <Route path="/" element={<HomePage/>} />
+          <Route path="/" element={<UserAuth/>} />
+          <Route path="/home" element={<HomePage/>} />
           <Route path="/products" element={<Products products={products}/>} />
           <Route path="/product/:id" element={<ProductDetail products={products} />} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/contact" element={<ContactUs/>} />
           <Route path="/about" element={<AboutUs/>} />
-          <Route path="/auth" element={<UserAuth/>} />
+          
         </Routes>
       
       </div>
 
       </CartProvider>
+      </AuthProvider>
+      
       
     </Router>
     
