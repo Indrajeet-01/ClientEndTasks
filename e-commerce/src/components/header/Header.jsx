@@ -11,10 +11,7 @@ const Header = () => {
   const navigate = useNavigate()
 
   const handleSignOut = () => {
-    // Dispatch the 'SIGN_OUT' action to sign out the user
     dispatch({ type: 'SIGN_OUT' });
-
-    // Redirect the user to the login page
     navigate('/');
   };
 

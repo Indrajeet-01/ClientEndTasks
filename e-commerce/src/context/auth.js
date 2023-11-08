@@ -3,7 +3,7 @@ import React, { createContext, useContext, useReducer, useEffect } from 'react';
 export const AuthContext = createContext();
 
 const AUTH_TOKEN_KEY = 'token';
-const AUTO_LOGOUT_TIME = 10 * 60 * 1000; // 10 minutes in milliseconds
+const AUTO_LOGOUT_TIME = 10 * 60 * 1000; 
 
 const authReducer = (state, action) => {
   switch (action.type) {

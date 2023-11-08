@@ -10,35 +10,34 @@ import axios from 'axios'
 
 const ProductDetail = ({ products }) => {
     const { id } = useParams(); 
-    console.log(id) // Access the "id" parameter from the URL
     const productId = parseInt(id, 10);
     console.log(productId)
-  const product = products.find((p) => p.id === productId);
-  console.log(products)
-  console.log(product)
+    const product = products.find((p) => p.id === productId);
+    
+    console.log(product)
 
-  const { dispatch } = useContext(CartContext); // Access the addToCart function from the cart context
+  const { dispatch } = useContext(CartContext); 
   const { authState } = useAuth();
   const handleAddToCart = () => {
     if (!authState.user) {
-      // User is not logged in, handle this case as needed
+      
       alert("Please log in to add items to your cart.");
-      return; // Do not proceed if the user is not logged in
+      return; 
     }
     const userEmail = authState.user.email;
     const cleanedEmail = userEmail.replace(/[@.]/g, '');
-    // Prepare the data to send
+    
     const data = {
       productId: product.id,
-      quantity: 1, // You can adjust the quantity as needed
+      quantity: 1, 
     };
 
-    // Send a POST request to your CRUD CRUD API using Axios
-    axios.post(`https://crudcrud.com/api/fa49cd84c38a46f2bfea895936a575f3/cart${cleanedEmail}`, data)
+    
+    axios.post(`https://crudcrud.com/api/51b7f7c2dc884a848aa9b7e05d9e48a9/cart${cleanedEmail}`, data)
       .then((response) => {
-        // Handle the response, if needed
+        
         console.log("Product added to cart:", response.data);
-        // Dispatch an action to add the product to the cart
+        
         dispatch({
           type: "ADD_TO_CART",
           product: product,
@@ -68,9 +67,9 @@ const ProductDetail = ({ products }) => {
         <p className="product-description">{product.description}</p>
         <p className="product-category">Category: {product.category}</p>
         <p className={`product-stock ${product.stock > 0 ? "in-stock" : "out-of-stock"}`}>
-  {product.stock > 0 ? "In stock" : "Out of stock"}
+        {product.stock > 0 ? "In stock" : "Out of stock"}
 </p>
-<button
+        <button
           className={`add-to-cart-button ${
             !authState.user ? "disabled" : "" // Apply 'disabled' class if not logged in
           }`}

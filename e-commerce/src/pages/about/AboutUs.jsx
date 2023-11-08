@@ -1,5 +1,5 @@
 import React from 'react';
-import './aboutus.css'; // Import the CSS file
+import './aboutus.css'; 
 import 'font-awesome/css/font-awesome.min.css';
 
 const AboutUs = () => {

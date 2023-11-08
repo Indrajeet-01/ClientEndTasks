@@ -21,8 +21,8 @@ const ContactUs = () => {
     
 
     try {
-        const userContactCollection = collection(db, 'UserContact'); // Use 'collection' to access the collection
-      await addDoc(userContactCollection, formData); // Use the addDoc method to add a document
+        const userContactCollection = collection(db, 'UserContact'); 
+        await addDoc(userContactCollection, formData); 
   
         console.log('Contact details stored in Firestore');
     } catch (error) {

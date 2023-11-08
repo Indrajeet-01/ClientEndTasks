@@ -3,7 +3,6 @@ import {  Outlet, RouterProvider,createBrowserRouter} from "react-router-dom";
 import  { CartProvider } from "./context/store";
 import { AuthProvider  } from "./context/auth";
 
-
 import Header from "./components/header/Header";
 
 import AboutUs from "./pages/about/AboutUs";
@@ -208,25 +207,15 @@ const router = createBrowserRouter([
 
 function App() {
 
-  
-  
   return (
     
       <AuthProvider>
-        
         <CartProvider >
-      <div className="App">
-
-        <RouterProvider router={router}/>
-      
-      </div>
-
+          <div className="App">
+            <RouterProvider router={router}/>
+          </div>
       </CartProvider>
       </AuthProvider>
-      
-      
-    
-    
   );
 }
 

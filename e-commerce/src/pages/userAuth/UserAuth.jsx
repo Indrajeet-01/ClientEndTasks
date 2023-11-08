@@ -1,4 +1,4 @@
-// src/components/Auth.js
+
 import React, { useState } from 'react';
 import {  useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
@@ -11,7 +11,7 @@ const UserAuth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [isSignUp, setIsSignUp] = useState(false); // Indicates whether the user is signing up
+  const [isSignUp, setIsSignUp] = useState(false); 
   const { dispatch } = useAuth();
 
   const navigate = useNavigate()
@@ -19,13 +19,11 @@ const UserAuth = () => {
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
-        // The user is signed in, now get the token
+        
         const user = userCredential.user;
         try {
-          const token = await user.getIdToken(); // Get the user's token
-          // Store the token in your AuthContext
+          const token = await user.getIdToken(); 
           dispatch({ type: 'SIGN_IN', user, token });
-          // Navigate to the desired route
           navigate('/products');
         } catch (error) {
           console.error(error);
@@ -40,13 +38,12 @@ const UserAuth = () => {
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
-          // The user is signed up, now get the token
+          
           const user = userCredential.user;
           try {
-            const token = await user.getIdToken(); // Get the user's token
-            // Store the token in your AuthContext
+            const token = await user.getIdToken(); 
+            
             dispatch({ type: 'SIGN_IN', user, token });
-            // Navigate to the desired route
             navigate('/products');
           } catch (error) {
             console.error(error);
