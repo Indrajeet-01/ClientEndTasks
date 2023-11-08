@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
+import {  Outlet, RouterProvider,createBrowserRouter} from "react-router-dom";
 
 import  { CartProvider } from "./context/store";
-import { AuthProvider, useAuth } from "./context/auth";
+import { AuthProvider  } from "./context/auth";
+
+
 import Header from "./components/header/Header";
-
-
 
 import AboutUs from "./pages/about/AboutUs";
 import HomePage from "./pages/home/Home";
@@ -159,26 +159,65 @@ const products = [
 ];
 
 
+const Layout = () => {
+  return (
+    <>
+    <Header/>
+    <Outlet/>
+    
+    </>
+  )
+}
+
+const router = createBrowserRouter([
+  {
+    path:'/',
+    element: <Layout/>,
+    children: [
+      {
+        path: '/home',
+        element: <HomePage/>
+      },
+      {
+        path: '/products',
+        element: <Products products={products} />
+      },
+      {
+        path: '/product/:id',
+        element: <ProductDetail products={products} />
+      },
+      {
+        path: '/contact',
+        element: <ContactUs/>
+      },
+      {
+        path: '/about',
+        element: <AboutUs/>
+      },
+      {
+        path: '/cart',
+        element: <Cart/>
+      }
+    ]
+  },
+  {
+    path: '/auth',
+    element: <UserAuth/>
+  }
+])
+
 function App() {
+
+  
   
   return (
-    <Router>
+    
       <AuthProvider>
         
         <CartProvider >
       <div className="App">
-         <Header/> 
-      
-        <Routes>
-          <Route path="/" element={<UserAuth/>} />
-          <Route path="/home" element={<HomePage/>} />
-          <Route path="/products" element={<Products products={products}/>} />
-          <Route path="/product/:id" element={<ProductDetail products={products} />} />
-          <Route path="/cart" element={<Cart/>} />
-          <Route path="/contact" element={<ContactUs/>} />
-          <Route path="/about" element={<AboutUs/>} />
-          
-        </Routes>
+
+        <RouterProvider router={router}/>
       
       </div>
 
@@ -186,7 +225,7 @@ function App() {
       </AuthProvider>
       
       
-    </Router>
+    
     
   );
 }

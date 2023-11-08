@@ -30,19 +30,22 @@ const Header = () => {
         </ul>
       </nav>
 
-      {authState.user && authState.token ? (
+      
         <div className='authUser'>
-        <div className="cart">
+        {authState.user && authState.token ? (
+          <>
+          <div className="cart">
           <Link to='/cart'>
             <i className="fa fa-shopping-cart"></i>
             <span className="item-count">{cart.length}</span>
           </Link>
-          
         </div>
-        <button className="sign-out-button" onClick={handleSignOut}>Sign Out</button>
+        <button className="auth" onClick={handleSignOut}>Sign Out</button>
+          </>
+        ) : (<Link className='auth' to='/auth'>Log In</Link>)}
         </div>
         
-      ) : null}
+      
     </header>
   );
 };

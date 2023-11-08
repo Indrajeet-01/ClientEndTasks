@@ -66,7 +66,7 @@ header {
     /* Adjust the margin as needed */
   }
 
-  .sign-out-button {
+  .auth {
     background-color: #ff0000; /* Choose your desired background color */
     color: #fff;
     border: none;
@@ -76,6 +76,6 @@ header {
     margin-left: 10px; /* Add margin to separate it from the cart icon */
   }
   
-  .sign-out-button:hover {
+  .auth {
     background-color: #cc0000; /* Choose a darker color for hover effect */
   }
