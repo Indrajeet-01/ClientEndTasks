@@ -5,6 +5,7 @@ import { useAuth } from "../../context/auth";
 import './productDetail.css'
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import axios from 'axios'
 
 
 const ProductDetail = ({ products }) => {
@@ -24,12 +25,29 @@ const ProductDetail = ({ products }) => {
       alert("Please log in to add items to your cart.");
       return; // Do not proceed if the user is not logged in
     }
-    // Dispatch an action to add the product to the cart
-    dispatch({
-      type: "ADD_TO_CART",
-      product: product,
+    const userEmail = authState.user.email;
+    const cleanedEmail = userEmail.replace(/[@.]/g, '');
+    // Prepare the data to send
+    const data = {
+      productId: product.id,
       quantity: 1, // You can adjust the quantity as needed
-    });
+    };
+
+    // Send a POST request to your CRUD CRUD API using Axios
+    axios.post(`https://crudcrud.com/api/fa49cd84c38a46f2bfea895936a575f3/cart${cleanedEmail}`, data)
+      .then((response) => {
+        // Handle the response, if needed
+        console.log("Product added to cart:", response.data);
+        // Dispatch an action to add the product to the cart
+        dispatch({
+          type: "ADD_TO_CART",
+          product: product,
+          quantity: 1,
+        });
+      })
+      .catch((error) => {
+        console.error("Error adding product to cart:", error);
+      });
   };
 
   

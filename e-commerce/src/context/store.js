@@ -39,6 +39,10 @@ const cartReducer = (state, action) => {
       // Handle clearing the entire cart
       return [];
 
+      case 'SET_CART':
+        // Set the entire cart to a new value
+        return action.cart;
+
     default:
       return state;
   }
