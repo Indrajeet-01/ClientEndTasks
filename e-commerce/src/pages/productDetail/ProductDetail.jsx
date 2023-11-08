@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/store";
+import { useAuth } from "../../context/auth";
 import './productDetail.css'
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -16,8 +17,13 @@ const ProductDetail = ({ products }) => {
   console.log(product)
 
   const { dispatch } = useContext(CartContext); // Access the addToCart function from the cart context
-
+  const { authState } = useAuth();
   const handleAddToCart = () => {
+    if (!authState.user) {
+      // User is not logged in, handle this case as needed
+      alert("Please log in to add items to your cart.");
+      return; // Do not proceed if the user is not logged in
+    }
     // Dispatch an action to add the product to the cart
     dispatch({
       type: "ADD_TO_CART",
@@ -46,7 +52,15 @@ const ProductDetail = ({ products }) => {
         <p className={`product-stock ${product.stock > 0 ? "in-stock" : "out-of-stock"}`}>
   {product.stock > 0 ? "In stock" : "Out of stock"}
 </p>
-        <button className="add-to-cart-button" onClick={handleAddToCart}>Add to Cart</button>
+<button
+          className={`add-to-cart-button ${
+            !authState.user ? "disabled" : "" // Apply 'disabled' class if not logged in
+          }`}
+          onClick={handleAddToCart}
+          disabled={!authState.user}
+        >
+          Add to Cart
+        </button>
         <div className="product-reviews">Reviews:</div>
         <ul>
           {product.reviews.map((review, index) => (

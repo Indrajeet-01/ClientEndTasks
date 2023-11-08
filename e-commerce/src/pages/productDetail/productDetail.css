@@ -61,6 +61,23 @@
   .add-to-cart-button:hover {
     background-color: #0056B3;
   }
+  /* CSS for the disabled button */
+.add-to-cart-button.disabled {
+  background-color: #ccc; /* Change the background color to a light gray */
+  color: #666; /* Change the text color to a darker gray */
+  cursor: not-allowed; /* Change the cursor to not-allowed to indicate it's not clickable */
+  /* Disable pointer events to prevent clicks */
+  /* Add any additional styling you want to indicate it's disabled */
+}
+
+/* CSS for the normal button */
+.add-to-cart-button {
+  background-color: #0074d9; /* Default background color */
+  color: #fff; /* Default text color */
+  cursor: pointer; /* Default cursor style */
+  /* Add any additional styling for the normal button */
+}
+
   
   .product-reviews {
     font-size: 18px;
