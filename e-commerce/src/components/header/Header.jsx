@@ -12,7 +12,7 @@ const Header = () => {
 
   const handleSignOut = () => {
     dispatch({ type: 'SIGN_OUT' });
-    navigate('/');
+    navigate('/auth');
   };
 
   return (
