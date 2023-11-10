@@ -1,6 +1,7 @@
 import React, { useState, } from 'react'
 import './menu.css'
 import { useDispatchCart } from '../../reducers/ContextReducer';
+import axios from 'axios'
 
 
 const mealItems = [
@@ -39,11 +40,31 @@ const Menu = () => {
     return (parseFloat(item.price.slice(1)) * quantity).toFixed(2); 
   };
 
-  const addToCart = (item) => {
-    
-    const quantity = itemQuantities[item.id] || 1
-    const finalPrice = calculateFinalPrice(item,quantity)
-
+  const addToCart = async (item) => {
+    const quantity = itemQuantities[item.id] || 1;
+    const finalPrice = calculateFinalPrice(item, quantity);
+  
+    const candyInfo = {
+      id: item.id,
+      name: item.name,
+      qty: quantity,
+      price: finalPrice,
+      
+    };
+  
+    try {
+      const response = await axios.post('https://crudcrud.com/api/e5bc3c591bd94fb2b680a477f3a6bde8/cart', candyInfo);
+  
+      if (response.status === 201) {
+        console.log('Candy added to cart successfully');
+        // You can add further actions here if needed
+      } else {
+        console.error('Failed to add candy to cart');
+      }
+    } catch (error) {
+      console.error('Error adding candy to cart', error);
+    }
+  
     dispatch({
       type: 'ADD_TO_CART',
       id: item.id,
@@ -51,11 +72,8 @@ const Menu = () => {
       qty: quantity,
       price: finalPrice,
       description: item.description,
-
-    })
-    
-  }
-
+    });
+  };
   const handleQuantityChange = (event, itemId) => {
     const newQuantity = parseInt(event.target.value, 10);
     setItemQuantities({

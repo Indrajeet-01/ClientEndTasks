@@ -12,6 +12,9 @@ const reducer = (state,action) => {
         case 'REMOVE_FROM_CART': let newArr = [...state]
                         newArr.splice(action.index,1)
                         return newArr
+
+                        case 'SET_CART':
+                            return action.cart; 
         default: console.log('error')
     }
 

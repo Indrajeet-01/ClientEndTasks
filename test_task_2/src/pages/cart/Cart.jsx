@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useCart, useDispatchCart } from '../../reducers/ContextReducer';
 import './cart.css'; 
+import axios from 'axios';
 
 
 const Cart = () => {
@@ -14,6 +15,25 @@ const Cart = () => {
     const totalAmount = cartItems.reduce((total, item) => {
         return total + parseFloat(item.price);
     }, 0).toFixed(2);
+
+    useEffect(() => {
+        const fetchCartItems = async () => {
+            try {
+                const response = await axios.get('https://crudcrud.com/api/e5bc3c591bd94fb2b680a477f3a6bde8/cart');
+                if (response.status === 200) {
+                    // Dispatch the stored cart items to the context
+                    dispatch({
+                        type: 'SET_CART',
+                        cart: response.data,
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching cart items', error);
+            }
+        };
+
+        fetchCartItems();
+    }, [dispatch]);
 
     return (
         <div className="cart-container">
